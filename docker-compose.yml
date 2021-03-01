@@ -16,7 +16,7 @@ services:
   api-server:
     links:
     - "postgres:postgres"
-    image: goku321/api-server:v0.5
+    build: .
     environment:
       DB_CONN_STR: "postgres://postgres:password@postgres:5432/postgres?sslmode=disable"
     ports:

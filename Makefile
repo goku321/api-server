@@ -9,7 +9,10 @@ build:
 # 	docker run --network mynetwork --name postgres -e POSTGRES_PASSWORD=password -d -p 6432:5432 postgres
 # 	docker run --network mynetwork --name api-server -e DB_CONN_STR=postgres://postgres:password@postgres:5432/postgres?sslmode=disable -p 8080:8080 goku321/api-server:v0.5
 
-start-server:
+build-image:
+	@docker-compose build --build-arg ACCESS_TOKEN=$(ACCESS_TOKEN)
+
+start-server: build-image
 	@docker-compose up --detach
 
 stop-server:
