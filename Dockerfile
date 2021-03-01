@@ -9,9 +9,9 @@ WORKDIR /app
 COPY go.mod .
 COPY go.sum .
 RUN go mod download
-COPY app/main.go .
+COPY . .
 # Build the Go app
-RUN CGO_ENABLED=0 GOOS=linux go build -o api-server .
+RUN CGO_ENABLED=0 GOOS=linux go build -o api-server ./app
 
 # Command to run when starting the container
 CMD [ "./api-server" ]
